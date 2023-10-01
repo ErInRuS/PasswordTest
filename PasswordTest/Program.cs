@@ -33,6 +33,7 @@ namespace PasswordTest
             ConsoleColor colorSelect = ConsoleColor.Yellow;
             string[] menuList = { "Изменить пароль" ,"Начать"};
             Console.Clear();
+            Console.CursorVisible = false;
             ConsoleKeyInfo key = Press();
             while (key.Key != ConsoleKey.Escape)
             {
@@ -164,6 +165,9 @@ namespace PasswordTest
                 {
                     arr.Add(nrt);
                 }
+
+                sr = (arr.Max() + arr.Min()) / 2;
+
                 Console.Write("Время ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
@@ -206,7 +210,7 @@ namespace PasswordTest
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 if (arr.Count != 0)
                 {
-                    Console.Write(arr.Max() - arr.Min());
+                    Console.Write((arr.Max() + arr.Min())/2);
                 }
                 Console.ResetColor();
                 Console.Write(" сек.");
