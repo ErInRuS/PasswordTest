@@ -164,7 +164,6 @@ namespace PasswordTest
                 {
                     arr.Add(nrt);
                 }
-
                 Console.Write("Время ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
@@ -172,8 +171,6 @@ namespace PasswordTest
                 {
                     trueVariable.Average();
                 }
-
-
                 if (nrt == sr)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
