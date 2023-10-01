@@ -125,7 +125,7 @@ namespace PasswordTest
             double nrt = 0;
             string text = "";
             ConsoleKeyInfo key =  Press();
-
+            double srCorr = 0;
             double sr = 0;
             
             while (true)
@@ -166,7 +166,12 @@ namespace PasswordTest
                     arr.Add(nrt);
                 }
 
-                sr = (arr.Max() + arr.Min()) / 2;
+                for(int i = 0; i < arr.Count; i++)
+                {
+                    sr += arr[i];
+                }
+                sr /= arr.Count;
+                srCorr = sr / 2;
 
                 Console.Write("Время ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -175,7 +180,7 @@ namespace PasswordTest
                 {
                     trueVariable.Average();
                 }
-                if (nrt == sr)
+                if (nrt > sr - srCorr & nrt < sr + srCorr)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(result);
