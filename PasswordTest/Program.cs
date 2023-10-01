@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading;
@@ -84,10 +85,11 @@ namespace PasswordTest
                         {
                             case 0:
                                 Console.Clear();
+                                Console.CursorVisible = true;
                                 Console.WriteLine("Введите пароль: ");
                                 str = Console.ReadLine();
                                 Console.WriteLine("Успешно!");
-
+                                Console.CursorVisible = false;
                                 break;
                             case 1:
                                 TestPass();
@@ -117,11 +119,12 @@ namespace PasswordTest
         static void TestPass()
         {
             List<double> arr = new List<double>();
+            List<double> trueVariable = new List<double>();
             Stopwatch sw = new Stopwatch();
             double nrt = 0;
             string text = "";
             ConsoleKeyInfo key =  Press();
-            double num = 0;
+
             double sr = 0;
             
             while (true)
@@ -154,20 +157,20 @@ namespace PasswordTest
                 nrt = Convert.ToDouble(sw.ElapsedMilliseconds)/1000;
                 sw.Reset();
                 Console.Clear();
-                Console.Write($"{str} | ");
+                Console.WriteLine($"{str}");
                 Color(str,text);
                 string result = String.Format("{0,0}", nrt);
                 if (str == text || text == str)
                 {
                     arr.Add(nrt);
                 }
-                
+
                 Console.Write("Время ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
-                if (arr.Count != 0)
+                if (trueVariable.Count != 0)
                 {
-                    arr.Average();
+                    trueVariable.Average();
                 }
 
 
@@ -239,7 +242,6 @@ namespace PasswordTest
                 for (int i = 0; n1.Length - n2.Length != 0; i++)
                 {
                     n2 += '*';
-                    
                 }
             }
 
@@ -287,10 +289,11 @@ namespace PasswordTest
                     }
                 }
             }
-            if (num == 99)
+            if (n1 == n2)
             {
-                num++;
+                num = 100;
             }
+
             Console.WriteLine();
             Console.WriteLine($"Верно на {num}%");
 
