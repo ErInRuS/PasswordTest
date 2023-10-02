@@ -139,7 +139,8 @@ namespace PasswordTest
 
                 Console.Clear();
                 sw.Start();
-
+                text = Console.ReadLine();
+                /*
                 while (text.Length < str.Length)
                 {
                     if(key.Key == ConsoleKey.Escape)
@@ -153,6 +154,7 @@ namespace PasswordTest
                     }
                     text += key.KeyChar;
                 }
+                */
                 Console.WriteLine();
                 sw.Stop();
                 nrt = Convert.ToDouble(sw.ElapsedMilliseconds)/1000;
